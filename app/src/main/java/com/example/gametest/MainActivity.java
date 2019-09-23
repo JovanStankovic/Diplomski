@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity{
     private int frameHeight, frameWidth, initialFrameWidth;
     private LinearLayout startLayout;
     //Slike
-    private ImageView boxBlue, boxPink, bomb, money, cross, boxSelection, boxSelectionPink;
+    private ImageView boxBlue, boxPink, bomb, money, cross, boxSelection, boxSelectionPink,boxSelectionLocked,boxSelectionGreen;
     private Drawable imageBoxRight, imageBoxLeft, imageBoxPinkRight, imageBoxPinkLeft;
     //Velicine
     private int boxSize;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity{
     private SoundPlayer soundPlayer;
     //Buttons
     private Button playButton, quitGameButton, optionsButton, resumeButton, backButton, mainMenuButton, quitButton;
-    private RadioButton selectionRadioButton, selection2RadioButton,soundOnRadioButton,soundOffRadioButton;
+    private RadioButton selectionRadioButton, selection2RadioButton,selection3RadioButton,selection4RadioButton,soundOnRadioButton,soundOffRadioButton;
     //Status2
     private boolean start_flg = false;
     private boolean action_flg = false;
@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity{
         boxBlue = findViewById(R.id.box);
         boxSelection = findViewById(R.id.boxSelection);
         boxSelectionPink = findViewById(R.id.boxSelectionPink);
+        boxSelectionLocked = findViewById(R.id.boxSelectionLocked);
+        boxSelectionGreen = findViewById(R.id.boxSelectionGreen);
         boxPink = findViewById(R.id.boxPink);
         cross = findViewById(R.id.pink);
         bomb = findViewById(R.id.black);
@@ -91,6 +93,8 @@ public class MainActivity extends AppCompatActivity{
 
         selectionRadioButton = findViewById(R.id.selectionRadioButton);
         selection2RadioButton = findViewById(R.id.selection2RadioButton);
+        selection3RadioButton = findViewById(R.id.selection3RadioButton);
+        selection4RadioButton = findViewById(R.id.selection4RadioButton);
         soundOnRadioButton = findViewById(R.id.soundOnRadioButton);
         soundOffRadioButton = findViewById(R.id.soundOffRadioButton);
 
@@ -567,12 +571,17 @@ public class MainActivity extends AppCompatActivity{
         backButton.setVisibility(View.VISIBLE);
         selectionRadioButton.setVisibility(View.VISIBLE);
         selection2RadioButton.setVisibility(View.VISIBLE);
+        selection3RadioButton.setVisibility(View.VISIBLE);
+        selection4RadioButton.setVisibility(View.VISIBLE);
         boxSelection.setVisibility(View.VISIBLE);
         boxSelectionPink.setVisibility(View.VISIBLE);
+        boxSelectionGreen.setVisibility(View.VISIBLE);
+        boxSelectionLocked.setVisibility(View.VISIBLE);
         characterChoose.setVisibility(View.VISIBLE);
         sound.setVisibility(View.VISIBLE);
         soundOnRadioButton.setVisibility(View.VISIBLE);
         soundOffRadioButton.setVisibility(View.VISIBLE);
+
 
     }
 
@@ -588,14 +597,16 @@ public class MainActivity extends AppCompatActivity{
         backButton.setVisibility(View.INVISIBLE);
         selectionRadioButton.setVisibility(View.INVISIBLE);
         selection2RadioButton.setVisibility(View.INVISIBLE);
+        selection3RadioButton.setVisibility(View.INVISIBLE);
+        selection4RadioButton.setVisibility(View.INVISIBLE);
         boxSelection.setVisibility(View.INVISIBLE);
         boxSelectionPink.setVisibility(View.INVISIBLE);
         characterChoose.setVisibility(View.INVISIBLE);
         sound.setVisibility(View.INVISIBLE);
         soundOnRadioButton.setVisibility(View.INVISIBLE);
         soundOffRadioButton.setVisibility(View.INVISIBLE);
-
-
+        boxSelectionGreen.setVisibility(View.INVISIBLE);
+        boxSelectionLocked.setVisibility(View.INVISIBLE);
 
     }
 
