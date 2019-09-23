@@ -295,8 +295,9 @@
             android:layout_marginLeft="255dp"
             android:layout_marginTop="280dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/box_pink_left"
+            android:src="@drawable/lock"
             android:visibility="invisible" />
+
 
         <LinearLayout
             android:id="@+id/startLayout"
