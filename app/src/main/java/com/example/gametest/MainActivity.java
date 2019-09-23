@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.View.OnClickListener;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
@@ -18,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity{
     private float crossX, crossY;
 
     //Rezultat
-    private TextView scoreLabel, highScoreLabel, nextLevel, gameNameLabel, gameCompleted;
+    private TextView scoreLabel, highScoreLabel, nextLevel, gameNameLabel, gameCompleted,sound,characterChoose;
     private int score, highScore, timeCount;
     private SharedPreferences settings;
     //Klasa
@@ -50,8 +48,8 @@ public class MainActivity extends AppCompatActivity{
     private Handler handler = new Handler();
     private SoundPlayer soundPlayer;
     //Buttons
-    private Button playButton, quitGameButton, customizeButton, resumeButton, backButton, mainMenuButton, quitButton;
-    private RadioButton selectionRadioButton, selection2RadioButton;
+    private Button playButton, quitGameButton, optionsButton, resumeButton, backButton, mainMenuButton, quitButton;
+    private RadioButton selectionRadioButton, selection2RadioButton,soundOnRadioButton,soundOffRadioButton;
     //Status2
     private boolean start_flg = false;
     private boolean action_flg = false;
@@ -79,6 +77,8 @@ public class MainActivity extends AppCompatActivity{
         money = findViewById(R.id.orange);
         scoreLabel = findViewById(R.id.scoreLabel);
         nextLevel = findViewById(R.id.nextLevel);
+        sound = findViewById(R.id.sound);
+        characterChoose = findViewById(R.id.characterChoose);
         gameCompleted = findViewById(R.id.gameCompleted);
         highScoreLabel = findViewById(R.id.highScoreLabel);
         playButton = findViewById(R.id.playButton);
@@ -86,11 +86,14 @@ public class MainActivity extends AppCompatActivity{
         backButton = findViewById(R.id.backButton);
         resumeButton = findViewById(R.id.resumeButton);
         quitButton = findViewById(R.id.quitButton);
-        customizeButton = findViewById(R.id.customizeButton);
+        optionsButton = findViewById(R.id.optionsButton);
         mainMenuButton = findViewById(R.id.mainMenuButton);
 
         selectionRadioButton = findViewById(R.id.selectionRadioButton);
         selection2RadioButton = findViewById(R.id.selection2RadioButton);
+        soundOnRadioButton = findViewById(R.id.soundOnRadioButton);
+        soundOffRadioButton = findViewById(R.id.soundOffRadioButton);
+
 
         imageBoxLeft = getResources().getDrawable(R.drawable.box_left);
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
@@ -552,20 +555,24 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-    public void openChooseCharacter(View view) {
+    public void openOptions(View view) {
 
         gameNameLabel.setVisibility(View.INVISIBLE);
         highScoreLabel.setVisibility(View.INVISIBLE);
         playButton.setVisibility(View.INVISIBLE);
         quitGameButton.setVisibility(View.INVISIBLE);
-        customizeButton.setVisibility(View.INVISIBLE);
+        optionsButton.setVisibility(View.INVISIBLE);
 
-        scoreLabel.setText("Choose your character");
+        scoreLabel.setText("Options");
         backButton.setVisibility(View.VISIBLE);
         selectionRadioButton.setVisibility(View.VISIBLE);
         selection2RadioButton.setVisibility(View.VISIBLE);
         boxSelection.setVisibility(View.VISIBLE);
         boxSelectionPink.setVisibility(View.VISIBLE);
+        characterChoose.setVisibility(View.VISIBLE);
+        sound.setVisibility(View.VISIBLE);
+        soundOnRadioButton.setVisibility(View.VISIBLE);
+        soundOffRadioButton.setVisibility(View.VISIBLE);
 
     }
 
@@ -575,7 +582,7 @@ public class MainActivity extends AppCompatActivity{
         highScoreLabel.setVisibility(View.VISIBLE);
         playButton.setVisibility(View.VISIBLE);
         quitGameButton.setVisibility(View.VISIBLE);
-        customizeButton.setVisibility(View.VISIBLE);
+        optionsButton.setVisibility(View.VISIBLE);
 
         scoreLabel.setText("Score: 0");
         backButton.setVisibility(View.INVISIBLE);
@@ -583,6 +590,11 @@ public class MainActivity extends AppCompatActivity{
         selection2RadioButton.setVisibility(View.INVISIBLE);
         boxSelection.setVisibility(View.INVISIBLE);
         boxSelectionPink.setVisibility(View.INVISIBLE);
+        characterChoose.setVisibility(View.INVISIBLE);
+        sound.setVisibility(View.INVISIBLE);
+        soundOnRadioButton.setVisibility(View.INVISIBLE);
+        soundOffRadioButton.setVisibility(View.INVISIBLE);
+
 
 
     }

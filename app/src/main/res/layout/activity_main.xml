@@ -61,9 +61,21 @@
             android:textSize="36dp"
             android:visibility="invisible" />
 
+        <TextView
+            android:id="@+id/characterChoose"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/lemonmilk"
+            android:text="Choose your character"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="140dp"
             android:layout_gravity="top|center_vertical"
             android:layout_marginTop="105dp"
             android:orientation="horizontal">
@@ -78,19 +90,63 @@
                 android:fontFamily="@font/lemonmilk"
                 android:text="Default Character"
                 android:textColor="@android:color/black"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <RadioButton
                 android:id="@+id/selection2RadioButton"
                 android:layout_width="120dp"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="78dp"
                 android:buttonTint="@android:color/holo_red_light"
                 android:checked="false"
                 android:fontFamily="@font/lemonmilk"
                 android:text="Cool Character"
                 android:textColor="@android:color/black"
-                android:visibility="visible" />
+                android:visibility="invisible" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="120dp"
+            android:fontFamily="@font/lemonmilk"
+            android:text="Sound"
+            android:textColor="@android:color/black"
+            android:textSize="25sp"
+            android:visibility="invisible" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_vertical"
+            android:layout_marginBottom="85dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/soundOnRadioButton"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:buttonTint="@android:color/holo_red_light"
+                android:checked="true"
+                android:fontFamily="@font/lemonmilk"
+                android:text="On"
+                android:textColor="@android:color/black"
+                android:visibility="invisible" />
+
+            <RadioButton
+                android:id="@+id/soundOffRadioButton"
+                android:layout_width="120dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="78dp"
+                android:buttonTint="@android:color/holo_red_light"
+                android:checked="false"
+                android:fontFamily="@font/lemonmilk"
+                android:text="Off"
+                android:textColor="@android:color/black"
+                android:visibility="invisible" />
         </RadioGroup>
 
         <Button
@@ -173,7 +229,7 @@
             android:layout_marginLeft="47dp"
             android:layout_marginTop="50dp"
             android:src="@drawable/box_left"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/boxSelectionPink"
@@ -183,7 +239,7 @@
             android:layout_marginTop="50dp"
             android:scaleType="fitCenter"
             android:src="@drawable/box_pink_left"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/orange"
@@ -235,7 +291,7 @@
                 android:textColor="@android:color/black" />
 
             <Button
-                android:id="@+id/customizeButton"
+                android:id="@+id/optionsButton"
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -243,8 +299,8 @@
                 android:background="@android:color/holo_red_light"
                 android:clickable="true"
                 android:fontFamily="@font/lemonmilk"
-                android:onClick="openChooseCharacter"
-                android:text="Customize"
+                android:onClick="openOptions"
+                android:text="Options"
                 android:textColor="@android:color/black" />
 
             <Button
