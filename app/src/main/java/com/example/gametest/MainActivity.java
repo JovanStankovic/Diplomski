@@ -28,13 +28,12 @@ public class MainActivity extends AppCompatActivity{
     private int frameHeight, frameWidth, initialFrameWidth;
     private LinearLayout startLayout;
     //Slike
-    private ImageView boxBlue, boxPink, bomb, money, cross, boxSelection, boxSelectionPink,boxSelectionLocked,boxSelectionGreen;
-    private Drawable imageBoxRight, imageBoxLeft, imageBoxPinkRight, imageBoxPinkLeft;
+    private ImageView boxBlue, boxPink, boxGreen,bomb, money, cross, boxSelection, boxSelectionPink,boxSelectionLocked,boxSelectionGreen,boxSelectionGreenLocked;
+    private Drawable imageBoxRight, imageBoxLeft, imageBoxPinkRight, imageBoxPinkLeft,imageBoxGreenLeft,imageBoxGreenRight;
     //Velicine
     private int boxSize;
     //Pozicije
     private float boxX, boxY;
-    private float boxPinkX, boxPinkY;
     private float bombX, bombY;
     private float moneyX, moneyY;
     private float crossX, crossY;
@@ -69,10 +68,12 @@ public class MainActivity extends AppCompatActivity{
         gameNameLabel = findViewById(R.id.gameNameLabel);
         startLayout = findViewById(R.id.startLayout);
         boxBlue = findViewById(R.id.box);
+        boxGreen = findViewById(R.id.boxGreen);
         boxSelection = findViewById(R.id.boxSelection);
         boxSelectionPink = findViewById(R.id.boxSelectionPink);
         boxSelectionLocked = findViewById(R.id.boxSelectionLocked);
         boxSelectionGreen = findViewById(R.id.boxSelectionGreen);
+        boxSelectionGreenLocked = findViewById(R.id.boxSelectionGreenLocked);
         boxPink = findViewById(R.id.boxPink);
         cross = findViewById(R.id.pink);
         bomb = findViewById(R.id.black);
@@ -103,6 +104,8 @@ public class MainActivity extends AppCompatActivity{
         imageBoxRight = getResources().getDrawable(R.drawable.box_right);
         imageBoxPinkLeft = getResources().getDrawable(R.drawable.box_pink_left);
         imageBoxPinkRight = getResources().getDrawable(R.drawable.box_pink_right);
+        imageBoxGreenLeft = getResources().getDrawable(R.drawable.box_green_left);
+        imageBoxGreenRight = getResources().getDrawable(R.drawable.box_green_right);
 
         //highScore
         settings = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity{
             changeFrameWidth(initialFrameWidth);
             boxBlue.setVisibility(View.INVISIBLE);
             boxPink.setVisibility(View.INVISIBLE);
+            boxGreen.setVisibility(View.INVISIBLE);
 
         }
         //LEVEL4
@@ -548,13 +552,42 @@ public class MainActivity extends AppCompatActivity{
         boxPink.setX(boxX);
     }
 
+    public void moveBoxGreen() {
+        if (action_flg) {
+            boxX += 12;
+            boxGreen.setImageDrawable(imageBoxGreenRight);
+        } else {
+            boxX -= 12;
+            boxGreen.setImageDrawable(imageBoxGreenLeft);
+        }
+
+        //Check Box position
+        if (boxX < 0) {
+            boxX = 0;
+            boxGreen.setImageDrawable(imageBoxGreenRight);
+        }
+        if (frameWidth - boxSize < boxX) {
+            boxX = frameWidth - boxSize;
+            boxGreen.setImageDrawable(imageBoxGreenLeft);
+        }
+
+        boxGreen.setX(boxX);
+    }
+
+
     public void chosenBox() {
         if (selectionRadioButton.isChecked() == true) {
             moveBoxBlue();
             boxPink.setVisibility(View.INVISIBLE);
-        } else {
+            boxGreen.setVisibility(View.INVISIBLE);
+        } else if(selection2RadioButton.isChecked()==true){
             moveBoxPink();
             boxBlue.setVisibility(View.INVISIBLE);
+            boxGreen.setVisibility(View.INVISIBLE);
+        } else if(selection3RadioButton.isChecked()==true){
+            moveBoxGreen();
+            boxBlue.setVisibility(View.INVISIBLE);
+            boxPink.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -575,7 +608,10 @@ public class MainActivity extends AppCompatActivity{
         selection4RadioButton.setVisibility(View.VISIBLE);
         boxSelection.setVisibility(View.VISIBLE);
         boxSelectionPink.setVisibility(View.VISIBLE);
-        boxSelectionGreen.setVisibility(View.VISIBLE);
+        if(highScore>200){
+            boxSelectionGreen.setVisibility(View.VISIBLE);
+            selection3RadioButton.setClickable(true);
+        } else boxSelectionGreenLocked.setVisibility(View.VISIBLE);
         boxSelectionLocked.setVisibility(View.VISIBLE);
         characterChoose.setVisibility(View.VISIBLE);
         sound.setVisibility(View.VISIBLE);
@@ -607,6 +643,7 @@ public class MainActivity extends AppCompatActivity{
         soundOffRadioButton.setVisibility(View.INVISIBLE);
         boxSelectionGreen.setVisibility(View.INVISIBLE);
         boxSelectionLocked.setVisibility(View.INVISIBLE);
+        boxSelectionGreenLocked.setVisibility(View.INVISIBLE);
 
     }
 
@@ -653,14 +690,18 @@ public class MainActivity extends AppCompatActivity{
             frameWidth = gameFrame.getWidth();
             initialFrameWidth = frameWidth;
 
-            if (selectionRadioButton.isChecked()) {
+            if (selectionRadioButton.isChecked()==true) {
                 boxSize = boxBlue.getHeight();
                 boxX = boxBlue.getX();
                 boxY = boxBlue.getY();
-            } else {
-                boxSize = boxBlue.getHeight();
-                boxX = boxBlue.getX();
-                boxY = boxBlue.getY();
+            } else if (selection2RadioButton.isChecked()==true){
+                boxSize = boxPink.getHeight();
+                boxX = boxPink.getX();
+                boxY = boxPink.getY();
+            } else if (selection3RadioButton.isChecked()==true){
+                boxSize = boxGreen.getHeight();
+                boxX = boxGreen.getX();
+                boxY = boxGreen.getY();
             }
 
         }
@@ -668,9 +709,12 @@ public class MainActivity extends AppCompatActivity{
         if (selectionRadioButton.isChecked()) {
             boxBlue.setX(0.0f);
             boxBlue.setVisibility(View.VISIBLE);
-        } else {
+        } else if(selection2RadioButton.isChecked()){
             boxPink.setX(0.0f);
             boxPink.setVisibility(View.VISIBLE);
+        } else if(selection3RadioButton.isChecked()){
+            boxGreen.setX(0.0f);
+            boxGreen.setVisibility(View.VISIBLE);
         }
 
 
@@ -717,6 +761,7 @@ public class MainActivity extends AppCompatActivity{
         changeFrameWidth(initialFrameWidth);
         boxBlue.setVisibility(View.INVISIBLE);
         boxPink.setVisibility(View.INVISIBLE);
+        boxGreen.setVisibility(View.INVISIBLE);
         cross.setVisibility(View.INVISIBLE);
         money.setVisibility(View.INVISIBLE);
         bomb.setVisibility(View.INVISIBLE);
@@ -740,11 +785,7 @@ public class MainActivity extends AppCompatActivity{
                     public void run() {
 
 
-                        if (selectionRadioButton.isChecked()) {
-                            boxBlue.setVisibility(View.VISIBLE);
-                        } else {
-                            boxPink.setVisibility(View.VISIBLE);
-                        }
+                        visibleBox();
                         changeFrameWidth(frameWidth);
                         cross.setVisibility(View.VISIBLE);
                         money.setVisibility(View.VISIBLE);
@@ -780,6 +821,7 @@ public class MainActivity extends AppCompatActivity{
         changeFrameWidth(initialFrameWidth);
         boxBlue.setVisibility(View.INVISIBLE);
         boxPink.setVisibility(View.INVISIBLE);
+        boxGreen.setVisibility(View.INVISIBLE);
         cross.setVisibility(View.INVISIBLE);
         money.setVisibility(View.INVISIBLE);
         bomb.setVisibility(View.INVISIBLE);
@@ -798,9 +840,7 @@ public class MainActivity extends AppCompatActivity{
                             gameOver();
                         } else {
                             changeFrameWidth(frameWidth);
-                            if (selectionRadioButton.isChecked()) {
-                                boxBlue.setVisibility(View.VISIBLE);
-                            } else boxPink.setVisibility(View.VISIBLE);
+                            visibleBox();
                             cross.setVisibility(View.VISIBLE);
                             money.setVisibility(View.VISIBLE);
                             bomb.setVisibility(View.VISIBLE);
@@ -843,7 +883,15 @@ public class MainActivity extends AppCompatActivity{
             nextLevel();
         }
     }
-
+    public void visibleBox(){
+        if (selectionRadioButton.isChecked()==true) {
+            boxBlue.setVisibility(View.VISIBLE);
+        } else if (selection2RadioButton.isChecked()==true){
+            boxPink.setVisibility(View.VISIBLE);
+        } else if(selection3RadioButton.isChecked()==true){
+            boxGreen.setVisibility(View.VISIBLE);
+        }
+    }
 
     public void gameOver() {
 
@@ -865,6 +913,7 @@ public class MainActivity extends AppCompatActivity{
         gameNameLabel.setText("Game Over");
         boxPink.setVisibility(View.INVISIBLE);
         boxBlue.setVisibility(View.INVISIBLE);
+        boxGreen.setVisibility(View.INVISIBLE);
         cross.setVisibility(View.INVISIBLE);
         money.setVisibility(View.INVISIBLE);
         bomb.setVisibility(View.INVISIBLE);
