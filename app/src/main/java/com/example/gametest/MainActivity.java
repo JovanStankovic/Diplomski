@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity{
     public void changePos() {
 
         //ENDGAME
-        if (score == 30) {
+        if (score >= 1000) {
 
             score = score + 1;
             gameCompleted.setText("Game Completed GOOD JOB!");
@@ -168,13 +168,16 @@ public class MainActivity extends AppCompatActivity{
                 score += 10;
                 soundPlayer.playHitOrangeSound();
             }
-            if (moneyY - 34 == frameHeight) {
+            if (orangeCenterY - 34 == frameHeight) {
                 frameWidth = frameWidth * 85 / 100;
                 changeFrameWidth(frameWidth);
             }
             if (moneyY > frameHeight) {
                 moneyY = -100;
                 moneyX = (float) Math.floor(Math.random() * (frameWidth - money.getWidth()));
+            }
+            if(frameWidth <= boxSize + 100){
+                gameOver();
             }
 
             money.setX(moneyX);
@@ -256,7 +259,7 @@ public class MainActivity extends AppCompatActivity{
                 score += 10;
                 soundPlayer.playHitOrangeSound();
             }
-            if (moneyY - 20 == frameHeight) {
+            if (orangeCenterY -42 == frameHeight) {
                 frameWidth = frameWidth * 85 / 100;
                 changeFrameWidth(frameWidth);
             }
@@ -265,7 +268,9 @@ public class MainActivity extends AppCompatActivity{
                 moneyY = -100;
                 moneyX = (float) Math.floor(Math.random() * (frameWidth - money.getWidth()));
             }
-
+            if(frameWidth <= boxSize + 100){
+                gameOver();
+            }
             money.setX(moneyX);
             money.setY(moneyY);
 
@@ -277,7 +282,7 @@ public class MainActivity extends AppCompatActivity{
             }
 
             if (pink_flg) {
-                crossY += 40;
+                crossY += 30;
 
                 float pinkCenterX = crossX + cross.getWidth() / 2;
                 float pinkCenterY = crossY + cross.getHeight() / 2;
@@ -433,7 +438,7 @@ public class MainActivity extends AppCompatActivity{
                 score += 10;
                 soundPlayer.playHitOrangeSound();
             }
-            if (orangeCenterY - 46 == frameHeight) {
+            if (orangeCenterY -46 == frameHeight) {
                 frameWidth = frameWidth * 85 / 100;
                 changeFrameWidth(frameWidth);
             }
@@ -650,11 +655,8 @@ public class MainActivity extends AppCompatActivity{
 
     public boolean hitCheck(float x, float y) {
 
-        if (boxX <= x - 10 && x - 10 <= boxX + boxSize &&
-                boxY <= y + 45 && y + 45 <= frameHeight) {
-            return true;
-        }
-        return false;
+        return boxX <= x - 10 && x - 10 <= boxX + boxSize &&
+                boxY <= y + 45 && y + 45 <= frameHeight;
     }
 
 
@@ -791,7 +793,6 @@ public class MainActivity extends AppCompatActivity{
                         money.setVisibility(View.VISIBLE);
                         bomb.setVisibility(View.VISIBLE);
                         runGame();
-                        ;
                         resumeButton.setVisibility(View.INVISIBLE);
                         mainMenuButton.setVisibility(View.INVISIBLE);
                         quitButton.setVisibility(View.INVISIBLE);
