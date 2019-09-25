@@ -39,13 +39,13 @@ public class SoundPlayer {
     }
 
     public void playHitOrangeSound(){
-        soundPool.play(hitOrangeSound, 0.8f, 0.8f,1,0,1.0f);
+        soundPool.play(hitOrangeSound, 0.5f, 0.5f,1,0,1.0f);
     }
     public void playHitPinkSound(){
-        soundPool.play(hitPinkSound, 1.0f, 1.0f,1,0,1.0f);
+        soundPool.play(hitPinkSound, 0.6f, 0.6f,1,0,1.0f);
     }
     public void playHitBLackSound(){
-        soundPool.play(hitBlackSound, 0.6f, 0.6f,1,0,1.0f);
+        soundPool.play(hitBlackSound, 0.2f, 0.2f,1,0,1.0f);
     }
 
 

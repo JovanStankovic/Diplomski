@@ -168,7 +168,9 @@ public class MainActivity extends AppCompatActivity{
             if (hitCheck(orangeCenterX, orangeCenterY)) {
                 moneyY = frameHeight + 100;
                 score += 10;
-                soundPlayer.playHitOrangeSound();
+                if(soundOnRadioButton.isChecked()) {
+                    soundPlayer.playHitOrangeSound();
+                }
             }
             if (orangeCenterY - 34 == frameHeight) {
                 frameWidth = frameWidth * 85 / 100;
@@ -201,7 +203,9 @@ public class MainActivity extends AppCompatActivity{
                 if (hitCheck(pinkCenterX, pinkCenterY)) {
                     crossY = frameHeight + 30;
                     score += 30;
-                    soundPlayer.playHitPinkSound();
+                    if(soundOnRadioButton.isChecked()) {
+                        soundPlayer.playHitPinkSound();
+                    }
                     //Prosirujemo Frame
                     if (initialFrameWidth > frameWidth * 115 / 100) {
                         frameWidth = frameWidth * 110 / 100;
@@ -228,7 +232,9 @@ public class MainActivity extends AppCompatActivity{
 
                 if (hitCheck(blackCenterX, blackCenterY)) {
                     bombY = frameHeight + 90;
-                    soundPlayer.playHitBLackSound();
+                    if(soundOnRadioButton.isChecked()){
+                        soundPlayer.playHitBLackSound();
+                    }
                     //Smanjujemo frame
                     frameWidth = frameWidth * 85 / 100;
                     changeFrameWidth(frameWidth);
@@ -259,7 +265,9 @@ public class MainActivity extends AppCompatActivity{
             if (hitCheck(orangeCenterX, orangeCenterY)) {
                 moneyY = frameHeight + 100;
                 score += 10;
-                soundPlayer.playHitOrangeSound();
+                if(soundOnRadioButton.isChecked()) {
+                    soundPlayer.playHitOrangeSound();
+                }
             }
             if (orangeCenterY -42 == frameHeight) {
                 frameWidth = frameWidth * 85 / 100;
@@ -292,7 +300,9 @@ public class MainActivity extends AppCompatActivity{
                 if (hitCheck(pinkCenterX, pinkCenterY)) {
                     crossY = frameHeight + 30;
                     score += 30;
-                    soundPlayer.playHitPinkSound();
+                    if(soundOnRadioButton.isChecked()) {
+                        soundPlayer.playHitPinkSound();
+                    }
                     //Prosirujemo Frame
                     if (initialFrameWidth > frameWidth * 115 / 100) {
                         frameWidth = frameWidth * 110 / 100;
@@ -319,7 +329,9 @@ public class MainActivity extends AppCompatActivity{
 
                 if (hitCheck(blackCenterX, blackCenterY)) {
                     bombY = frameHeight + 90;
-                    soundPlayer.playHitBLackSound();
+                    if(soundOnRadioButton.isChecked()){
+                        soundPlayer.playHitBLackSound();
+                    }
                     //Smanjujemo frame
                     frameWidth = frameWidth * 85 / 100;
                     changeFrameWidth(frameWidth);
@@ -351,7 +363,9 @@ public class MainActivity extends AppCompatActivity{
             if (hitCheck(orangeCenterX, orangeCenterY)) {
                 moneyY = frameHeight + 100;
                 score += 10;
-                soundPlayer.playHitOrangeSound();
+                if(soundOnRadioButton.isChecked()) {
+                    soundPlayer.playHitOrangeSound();
+                }
             }
             if (orangeCenterY - 46 == frameHeight) {
                 frameWidth = frameWidth * 85 / 100;
@@ -382,7 +396,9 @@ public class MainActivity extends AppCompatActivity{
                 if (hitCheck(pinkCenterX, pinkCenterY)) {
                     crossY = frameHeight + 30;
                     score += 30;
-                    soundPlayer.playHitPinkSound();
+                    if(soundOnRadioButton.isChecked()) {
+                        soundPlayer.playHitPinkSound();
+                    }
                     //Prosirujemo Frame
                     if (initialFrameWidth > frameWidth * 115 / 100) {
                         frameWidth = frameWidth * 110 / 100;
@@ -409,7 +425,9 @@ public class MainActivity extends AppCompatActivity{
 
                 if (hitCheck(blackCenterX, blackCenterY)) {
                     bombY = frameHeight + 90;
-                    soundPlayer.playHitBLackSound();
+                    if(soundOnRadioButton.isChecked()){
+                        soundPlayer.playHitBLackSound();
+                    }
                     //Smanjujemo frame
                     frameWidth = frameWidth * 85 / 100;
                     changeFrameWidth(frameWidth);
@@ -438,7 +456,9 @@ public class MainActivity extends AppCompatActivity{
             if (hitCheck(orangeCenterX, orangeCenterY)) {
                 moneyY = frameHeight + 100;
                 score += 10;
-                soundPlayer.playHitOrangeSound();
+                if(soundOnRadioButton.isChecked()) {
+                    soundPlayer.playHitOrangeSound();
+                }
             }
             if (orangeCenterY -46 == frameHeight) {
                 frameWidth = frameWidth * 85 / 100;
@@ -471,7 +491,9 @@ public class MainActivity extends AppCompatActivity{
                 if (hitCheck(pinkCenterX, pinkCenterY)) {
                     crossY = frameHeight + 30;
                     score += 30;
-                    soundPlayer.playHitPinkSound();
+                    if(soundOnRadioButton.isChecked()) {
+                        soundPlayer.playHitPinkSound();
+                    }
                     //Prosirujemo Frame
                     if (initialFrameWidth > frameWidth * 115 / 100) {
                         frameWidth = frameWidth * 110 / 100;
@@ -498,7 +520,9 @@ public class MainActivity extends AppCompatActivity{
 
                 if (hitCheck(blackCenterX, blackCenterY)) {
                     bombY = frameHeight + 90;
-                    soundPlayer.playHitBLackSound();
+                    if(soundOnRadioButton.isChecked()){
+                        soundPlayer.playHitBLackSound();
+                    }
                     //Smanjujemo frame
                     frameWidth = frameWidth * 85 / 100;
                     changeFrameWidth(frameWidth);
@@ -687,7 +711,10 @@ public class MainActivity extends AppCompatActivity{
         startLayout.setVisibility(View.INVISIBLE);
         frameWidth = initialFrameWidth;
         start_flg = true;
-        playMusic();
+        if(soundOnRadioButton.isChecked()==true){
+            playMusic();
+        }
+
 
         if (frameHeight == 0) {
             frameHeight = gameFrame.getHeight();
@@ -761,6 +788,7 @@ public class MainActivity extends AppCompatActivity{
         pause_flg = true;
         timer.cancel();
         timer = null;
+        pauseMusic();
 
         changeFrameWidth(initialFrameWidth);
         boxBlue.setVisibility(View.INVISIBLE);
@@ -795,6 +823,9 @@ public class MainActivity extends AppCompatActivity{
                         money.setVisibility(View.VISIBLE);
                         bomb.setVisibility(View.VISIBLE);
                         runGame();
+                        if(soundOnRadioButton.isChecked()==true){
+                            playMusic();
+                        }
                         resumeButton.setVisibility(View.INVISIBLE);
                         mainMenuButton.setVisibility(View.INVISIBLE);
                         quitButton.setVisibility(View.INVISIBLE);
@@ -808,6 +839,7 @@ public class MainActivity extends AppCompatActivity{
     public void mainMenu(View view) {
 
         changeFrameWidth(initialFrameWidth);
+        stopMusic();
 
         startLayout.setVisibility(View.VISIBLE);
         resumeButton.setVisibility(View.INVISIBLE);
@@ -820,6 +852,7 @@ public class MainActivity extends AppCompatActivity{
         pause_flg = true;
         timer.cancel();
         timer = null;
+        pauseMusic();
 
         changeFrameWidth(initialFrameWidth);
         boxBlue.setVisibility(View.INVISIBLE);
@@ -838,6 +871,9 @@ public class MainActivity extends AppCompatActivity{
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
+                        if(soundOnRadioButton.isChecked()==true){
+                            playMusic();
+                        }
                         runGame();
                         if (frameWidth <= boxSize + 100) {
                             gameOver();
@@ -903,11 +939,30 @@ public class MainActivity extends AppCompatActivity{
         player.start();
     }
 
+    public void pauseMusic(){
+        if(player!=null){
+            player.pause();
+        }
+    }
+
+    public void stopMusic(){
+        stopPlayer();
+    }
+
+    public void stopPlayer(){
+        if(player!=null){
+            player.release();
+            player=null;
+        }
+    }
+
+
     public void gameOver() {
 
         timer.cancel();
         timer = null;
         start_flg = false;
+        stopMusic();
 
         //Befre showing starting Lyaout sleep 1s
         try {
