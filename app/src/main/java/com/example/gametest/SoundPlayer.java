@@ -9,10 +9,10 @@ import android.os.Build;
 public class SoundPlayer {
     //Insert sounds into raw
     private AudioAttributes audioAttributes;
-    final int SOUND_POOL_MAX = 5;
+    final int SOUND_POOL_MAX = 3;
 
     private static SoundPool soundPool;
-    private static int hitOrangeSound,hitPinkSound,hitBlackSound,gameStartMusic,silenceSound;
+    private static int hitOrangeSound,hitPinkSound,hitBlackSound;
 
 
     public SoundPlayer(Context context){
@@ -33,23 +33,20 @@ public class SoundPlayer {
         }
 
         hitOrangeSound = soundPool.load(context, R.raw.money, 1);
-        //hitBlackSound = soundPool.load(context, R.raw.bomb, 1);
-        //hitPinkSound = soundPool.load(context, R.raw.cross, 1);
-        //gameStartMusic = soundPool.load(context, R.raw.game,1);
-        silenceSound = soundPool.load(context, R.raw.silence,2);
+        hitBlackSound = soundPool.load(context, R.raw.bomb, 1);
+        hitPinkSound = soundPool.load(context, R.raw.cross, 1);
+
     }
 
     public void playHitOrangeSound(){
-        soundPool.play(hitOrangeSound, 1.0f, 1.0f,1,0,1.0f);
+        soundPool.play(hitOrangeSound, 0.8f, 0.8f,1,0,1.0f);
     }
     public void playHitPinkSound(){
         soundPool.play(hitPinkSound, 1.0f, 1.0f,1,0,1.0f);
     }
     public void playHitBLackSound(){
-        soundPool.play(hitBlackSound, 1.0f, 1.0f,1,0,1.0f);
+        soundPool.play(hitBlackSound, 0.6f, 0.6f,1,0,1.0f);
     }
-    public void playGameStartMusic(){soundPool.play(gameStartMusic,1.0f,1.0f,1,100,1.0f);}
-    public void playPauseSound(){ soundPool.play(silenceSound,1.0f,1.0f,2,100,1.0f);}
 
 
 }

@@ -3,6 +3,7 @@ package com.example.gametest;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity{
+    MediaPlayer player;
     //Pravimo okvir u kojem moze da se igra
     private FrameLayout gameFrame;
     private int frameHeight, frameWidth, initialFrameWidth;
@@ -685,7 +687,7 @@ public class MainActivity extends AppCompatActivity{
         startLayout.setVisibility(View.INVISIBLE);
         frameWidth = initialFrameWidth;
         start_flg = true;
-        soundPlayer.playGameStartMusic();
+        playMusic();
 
         if (frameHeight == 0) {
             frameHeight = gameFrame.getHeight();
@@ -892,6 +894,13 @@ public class MainActivity extends AppCompatActivity{
         } else if(selection3RadioButton.isChecked()==true){
             boxGreen.setVisibility(View.VISIBLE);
         }
+    }
+
+    public void playMusic(){
+        if(player==null){
+            player = MediaPlayer.create(this, R.raw.game_music);
+        }
+        player.start();
     }
 
     public void gameOver() {
