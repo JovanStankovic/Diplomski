@@ -613,7 +613,7 @@ public class MainActivity extends AppCompatActivity{
         selection4RadioButton.setVisibility(View.VISIBLE);
         boxSelection.setVisibility(View.VISIBLE);
         boxSelectionPink.setVisibility(View.VISIBLE);
-        if(highScore>200){
+        if(highScore>100){
             boxSelectionGreen.setVisibility(View.VISIBLE);
             selection3RadioButton.setClickable(true);
         } else boxSelectionGreenLocked.setVisibility(View.VISIBLE);
